@@ -122,6 +122,34 @@ class ClinicTests(unittest.TestCase):
 
             with self.assertRaises(ValueError):
                 clinic.add_appointment(second)
+    
+    def test_person_id_cannot_duplicate_appointment_id(self):
+    # Create an appointment with ID 301
+        appointment = Appointment(
+            301,
+            self.patient,
+            self.doctor,
+            14
+        )
+
+    # Create another patient using the appointment's ID
+        duplicate_patient = Patient("Mary", 301)
+        
+
+        another_doctor = Doctor("Dr Jones", 202)
+
+        with Clinic(self.log_file) as clinic:
+            clinic.add_appointment(appointment)
+
+        # The Clinic should reject the duplicate ID
+            with self.assertRaises(ValueError):
+                clinic.book(
+                    302,
+                    duplicate_patient,
+                    another_doctor,
+                    20,
+                    self.clock
+                )
 
     def test_clinic_returns_a_copy_of_appointment_list(self):
         appointment = Appointment(

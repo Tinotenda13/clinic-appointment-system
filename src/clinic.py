@@ -87,6 +87,13 @@ class Clinic:
 
     def __check_person_id(self, person):
         person_id = person.person_id
+
+    # Check whether this ID is already used by an appointment
+        for appointment in self.__appointments:
+            if appointment.appointment_id == person_id:
+                raise ValueError("Person ID is already used by an appointment.")
+
+    # Check whether this ID belongs to another registered person
         existing = self.__registered_people.get(person_id)
 
         if existing is not None and existing is not person:

@@ -55,10 +55,6 @@ class VisitorPatient(Patient):
         return 1.0
 
 
-class VisitorPatient(Patient):
-    def discount_rate(self):
-        return 1.0
-
 
 class Staff(Person, ABC):
     def __init__(self, name, person_id, **kwargs):
