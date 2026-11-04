@@ -141,7 +141,7 @@ The project includes automated unit tests covering appointment rules, staff avai
 Latest test result:
 
 ```text
-Ran 18 tests
+Ran 19 tests
 OK
 ```
 

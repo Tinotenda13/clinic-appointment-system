@@ -112,3 +112,10 @@ with Clinic() as clinic:
             item.patient.name,
             item.status.value
         )
+    
+        # Demonstrate a failed action
+    try:
+        clinic.cancel_appointment(999, clock)
+
+    except ValueError as error:
+        print("Expected failure:", error)
